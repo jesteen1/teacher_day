@@ -1,0 +1,2366 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>connection game</title>
+    <link rel="stylesheet" href="./tailwind.css">
+</head>
+
+<body>
+
+    <section class="justify-center flex hidden" name="winner-section" id="hide">
+
+        <div id="default-modal" tabindex="-1"
+            class=" flex justify-center overflow-y-auto overflow-x-hidden fixed top-0 bottom-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            The Team Points
+                        </h3>
+
+                    </div>
+                    <div class="flex justify-center">
+                        <video type="video/mp4" autoplay="true" src="./Stars_white.mp4" muted="" loop class="h-40 h-40"
+                            preload="auto">
+
+                        </video>
+
+                    </div>
+                    <p class="text-center p-5 text-2xl text-blue-500">Winner of the game</p>
+                    <p class="text-center p-5 text-2xl font-bold" id="team_name">Team name</p>
+                    <!-- Modal body -->
+                    <div class="p-5"><button class="p-5 bg-red-500 scale-100 transform hover:scale-110"
+                            id="close">close</button></div>
+                    <!-- Modal footer -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="justify-center flex hidden" name="point-update" id="pointed">
+
+        <div id="default-modal" tabindex="-1"
+            class=" flex justify-center overflow-y-auto overflow-x-hidden fixed top-0 bottom-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            The score of match
+                        </h3>
+
+                    </div>
+
+                    <p class="text-center p-5 text-2xl text-blue-500">The team points </p>
+                    <div class="flex border border-black p-5 blue">
+                        <p class="text-center  text-2xl font-bold mr-3 ">blue point : </p>
+                        <p class="text-center  text-2xl font-bold" id="blue_pointed"> 0</p>
+
+                    </div>
+                    <div class="flex border border-black p-5 green">
+                        <p class="text-center  text-2xl font-bold mr-2">green point:</p>
+                        <p class="text-center  text-2xl font-bold " id="green_pointed">0</p>
+                    </div>
+
+                    <div class="flex border border-black p-5 bg-pink-500">
+                        <p class="text-center  text-2xl font-bold mr-3">pink point :</p>
+
+                        <p class="text-center  text-2xl font-bold" id="pink_pointed">0</p>
+                    </div>
+
+                    <div class="flex border border-black p-5 orange">
+                        <p class="text-center  text-2xl font-bold mr-2 ">Orange point:</p>
+                        <p class="text-center text-2xl font-bold" id="Orange_pointed">0</p>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="p-5"><button
+                            class="p-5 bg-red-500 scale-100 transform hover:scale-110 text-white shadow-2xl"
+                            id="close_team">close in </button></div>
+                    <!-- Modal footer -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <h1 class=" font-bold bg-purple-500 p-5 text-center  text-white text-3xl">Connection Game</h1>
+
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question1/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question1/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8">
+            <div class="flex py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Inkland
+                </p>
+                <div class="">
+                    <p id="green_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold">
+                        <span>B.</span> England
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Poland
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> India
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question2/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question2/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8">
+            <div class="flex py-3">
+                <p id="green_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Finland
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold">
+                        <span>B.</span> Fish land
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Green land
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> England
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question3/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question3/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 ">
+            <div class="flex py-3    ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Mongolia
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold ">
+                        <span>B.</span> Germania
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3        ">
+                <p id="green_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Germany
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> Macedonia
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question4/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question4/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 ">
+            <div class="flex py-3    ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Netherland
+                </p>
+                <div class="">
+                    <p id="green_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold ">
+                        <span>B.</span> Iceland
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3        ">
+                <p id="green_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Cuba
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> Columbia
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!-- set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question5/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question5/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8">
+            <div class="flex py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Idly
+                </p>
+                <div class="">
+                    <p id="green_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold">
+                        <span>B.</span> Italy
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Trinity
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> Itly
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question6/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question6/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8">
+            <div class="flex py-3">
+                <p id="green_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Netherland
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold">
+                        <span>B.</span>Iceland
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span>Finland
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span>Green land
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question7/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question7/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 ">
+            <div class="flex py-3    ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Puerto Rico
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold ">
+                        <span>B.</span> Paraguay
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3        ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Portuguese
+                </p>
+                <div class="">
+                    <p id="green_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> Portugal
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question8/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question8/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 ">
+            <div class="flex py-3    ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Lion mania
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold ">
+                        <span>B.</span> Rome
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3        ">
+                <p id="green_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Romania
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> Wrestle mania
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question9/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question9/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8">
+            <div class="flex py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Prussia
+                </p>
+                <div class="wrong_answer">
+                    <p id=""
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold">
+                        <span>B.</span> Persia
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Serbia
+                </p>
+                <div class="">
+                    <p id="green_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> Russia
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question10/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question10/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8">
+            <div class="flex py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Slovakia
+                </p>
+                <div class="">
+                    <p id="green_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold">
+                        <span>B.</span>Scotland
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span>Switzerland
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span>Slovenia
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question11/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question11/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 ">
+            <div class="flex py-3    ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> San Marino
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold ">
+                        <span>B.</span> Sweden
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3        ">
+                <p id="green_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Spain
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> Spains
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question12/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question12/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 ">
+            <div class="flex py-3    ">
+                <p id="green_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Sweden
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold ">
+                        <span>B.</span> Sweeden
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3        ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Samoa
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> Somalia
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question13/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question13/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8">
+            <div class="flex py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Switch land
+                </p>
+                <div class="">
+                    <p id="green_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold">
+                        <span>B.</span> Switzerland
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> South Sudan
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span>Saudi Arabia
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question14/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question14/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8">
+            <div class="flex py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Finland
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold">
+                        <span>B.</span>Scotland
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3">
+                <p id="green_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span>Poland
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span>Pollard
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question15/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question15/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 ">
+            <div class="flex py-3    ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Queuewait
+                </p>
+                <div class="">
+                    <p id="green_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold ">
+                        <span>B.</span> Kuwait
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3        ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Taiwan
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> Aruba
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question16/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question16/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 ">
+            <div class="flex py-3    ">
+                <p id="green_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Turkey
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold ">
+                        <span>B.</span> Tarkey
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3        ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Taiwan
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> Thailand
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question17/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question17/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8">
+            <div class="flex py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Tender way
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold">
+                        <span>B.</span> Noway
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3">
+                <p id="green_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Norway
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span>Hardway
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question18/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question18/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8">
+            <div class="flex py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Thailand
+                </p>
+                <div class="">
+                    <p id="green_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold">
+                        <span>B.</span>Ireland
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span>Poland
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span>Northern Ireland
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question19/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question19/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 ">
+            <div class="flex py-3    ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Hookrain
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold ">
+                        <span>B.</span> Ukrain
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3        ">
+                <p id="green_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Ukraine
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> Egypt
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question20/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question20/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 ">
+            <div class="flex py-3    ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 font-bold transition duration-100 hover:font-bold hover:text-white  hover:font-bold">
+                    <span>A.</span> Sherwan
+                </p>
+                <div class="">
+                    <p id="green_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition duration-200 hover:text-white  hover:font-bold ">
+                        <span>B.</span> Taiwan
+                    </p>
+                </div>
+            </div>
+            <div class="flex  py-3        ">
+                <p id="wrong_answer"
+                    class="mr-10 bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition font-bold duration-100 hover:font-bold hover:text-white  ">
+                    <span>C.</span> Latvia
+                </p>
+                <div class="">
+                    <p id="wrong_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        <span>D.</span> Jersey
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question21/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question21/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        Switzerland</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question22/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question22/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Poland</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question23/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question23/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden ">
+
+            <div class="flex  py-3        ">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Kuwait</p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question24/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question24/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Turkey</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question25/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question25/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Norway</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question26/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question26/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Ireland</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question27/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question27/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden ">
+
+            <div class="flex  py-3        ">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Ukraine</p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question28/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question28/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Taiwan</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question29/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question29/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        New Zealand</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question30/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question30/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Cuba</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question31/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question31/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden ">
+
+            <div class="flex  py-3        ">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Thailand</p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question32/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question32/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Denmark</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question33/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question33/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Singapore</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question34/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question34/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Oman</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question35/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question35/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden ">
+
+            <div class="flex  py-3        ">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         India</p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question36/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question36/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Argentina</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question37/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question37/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Columbia</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question38/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question38/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Canada</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question39/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question39/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden ">
+
+            <div class="flex  py-3        ">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Japan</p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question40/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question40/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         China</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question41/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question41/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Nepal</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question42/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question42/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Bhutan</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question43/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question43/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden ">
+
+            <div class="flex  py-3        ">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Brazi</p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question44/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question44/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Qatar</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question45/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question45/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Sudan</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question46/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question46/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Zimbabwe</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question47/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question47/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden ">
+
+            <div class="flex  py-3        ">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Gambia</p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question48/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question48/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Mongolia</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question49/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question49/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Pakistan</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question50/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question50/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        Belgium</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question51/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question51/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden ">
+
+            <div class="flex  py-3        ">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        Malaysia</p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question52/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question52/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        Somalia</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question53/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question53/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        Iran</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question54/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question54/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Greece</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question55/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question55/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden ">
+
+            <div class="flex  py-3        ">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Georgia</p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <div class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question56/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question56/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        Hungary</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+    <!--set completed-->
+    <!--set completed-->
+    <div class="bg-blue-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question57/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question57/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Jersey</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-500">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-green-500  w-full " id="data_set">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question58/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question58/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        Luxembourg</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class="bg-pink-500   w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question59/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question59/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden ">
+
+            <div class="flex  py-3        ">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Wales</p>
+                </div>
+            </div>
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div name="last_conent" class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center">
+            <img src="./new_one/question60/image1.jpg" alt="" class="w-64 h-52 rounded">
+            <img src="./new_one/question60/image2.jpg" alt="" class="w-64 h-52 rounded">
+        </div>
+        <div class="p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                         Afghanistan</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+            <div class="p-5">
+                <div class="p-5  w-28 scale-100 transition-all transform duration-300  text-center cursor-pointer bg-red-500 hover:bg-green-500 hover:scale-110"
+                    id="check">check</div>
+            </div>
+
+        </div>
+    </div>
+    <!--set completed-->
+    <section name="table section" class="mt-10">
+
+        <p>-----</p>
+        <div class="table-wrapper text-2xl">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Team name</th>
+                        <th>no of points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>green team</td>
+                        <td id="green_display" class="font-bold">0</td>
+
+                    </tr>
+                    <tr>
+                        <td>orange-team</td>
+                        <td id="orange_display" class="font-bold">0</td>
+
+                    </tr>
+                    <tr>
+                        <td>blue-team</td>
+                        <td id="blue_display" class="font-bold">0</td>
+
+                    </tr>
+                    <tr>
+                        <td>pink team</td>
+                        <td id="pink_display" class="font-bold">0</td>
+                    </tr>
+                    <tr>
+
+                    </tr>
+                <tbody>
+            </table>
+
+        </div>
+
+
+    </section>
+    <div class="flex justify-center p-5">
+
+        <div class="p-5  w-28 scale-100 transition-all transform duration-300  text-center cursor-pointer bg-red-500 hover:bg-yellow-500 hover:scale-110"
+            id="clear">clear</div>
+
+    </div>
+</body>
+<script src="./tailwind.js"></script>
+<style>
+    #green_point,
+    #orange_point,
+    #blue_point,
+    #pink_point {
+        height: 70px;
+
+    }
+
+    .bg-yellow-500 {
+        background-color: yellow;
+    }
+
+    .green {
+        background-color: rgb(40, 255, 40);
+        color: rgb(5, 3, 3);
+    }
+
+    .blue {
+        background-color: rgb(72, 152, 255);
+    }
+
+    .orange {
+        background: orange;
+    }
+
+    .correct {
+        background-color: rgb(55, 255, 55);
+        color: whitesmoke;
+
+        font-weight: 800;
+    }
+
+    .height {
+        height: 0;
+        transition: all .5s linear;
+    }
+
+    .refer:hover>.height {
+        height: 140px;
+        padding: 30px;
+    }
+
+
+    * {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+
+    body {
+        font-family: Helvetica;
+        -webkit-font-smoothing: antialiased;
+        background: rgba(71, 147, 227, 1);
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: white;
+        padding: 30px 0;
+    }
+
+    /* Table Styles */
+
+    .table-wrapper {
+        margin: 10px 70px 70px;
+        box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .fl-table {
+        border-radius: 5px;
+        font-size: 22px;
+        font-weight: normal;
+        border: none;
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 100%;
+        white-space: nowrap;
+        background-color: white;
+    }
+
+    .fl-table td,
+    .fl-table th {
+        text-align: center;
+        padding: 8px;
+    }
+
+    .fl-table td {
+        border-right: 1px solid #f8f8f8;
+        font-size: 12px;
+    }
+
+    .fl-table thead th {
+        color: #ffffff;
+        background: #4FC3A1;
+    }
+
+
+    .fl-table thead th:nth-child(odd) {
+        color: #ffffff;
+        background: #324960;
+    }
+
+    .fl-table tr:nth-child(even) {
+        background: #F8F8F8;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 767px) {
+        .fl-table {
+            display: block;
+            width: 100%;
+        }
+
+        .table-wrapper:before {
+            content: "Scroll horizontally >";
+            display: block;
+            text-align: right;
+            font-size: 11px;
+            color: white;
+            padding: 0 0 10px;
+        }
+
+        .fl-table thead,
+        .fl-table tbody,
+        .fl-table thead th {
+            display: block;
+        }
+
+        .fl-table thead th:last-child {
+            border-bottom: none;
+        }
+
+        .fl-table thead {
+            float: left;
+        }
+
+        .fl-table tbody {
+            width: auto;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .fl-table td,
+        .fl-table th {
+            padding: 20px .625em .625em .625em;
+            height: 60px;
+            vertical-align: middle;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            overflow-y: auto;
+            width: 120px;
+            font-size: 13px;
+            text-overflow: ellipsis;
+        }
+
+        .fl-table thead th {
+            text-align: left;
+            border-bottom: 1px solid #f7f7f9;
+        }
+
+        .fl-table tbody tr {
+            display: table-cell;
+        }
+
+        .fl-table tbody tr:nth-child(odd) {
+            background: none;
+        }
+
+        .fl-table tr:nth-child(even) {
+            background: transparent;
+        }
+
+        .fl-table tr td:nth-child(odd) {
+            background: #F8F8F8;
+            border-right: 1px solid #E6E4E4;
+        }
+
+        .fl-table tr td:nth-child(even) {
+            border-right: 1px solid #E6E4E4;
+        }
+
+        .fl-table tbody td {
+            display: block;
+            text-align: center;
+        }
+    }
+</style>
+
+</html>
