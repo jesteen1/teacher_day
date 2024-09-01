@@ -1,0 +1,6 @@
+Options 
+A. Mania
+B. Togo
+C. Georgia
+D. Samoa
+Ans : C. Georgia
