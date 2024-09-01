@@ -1,0 +1,6 @@
+Options 
+A. Belgium
+B. Belarus
+C. Brussels 
+D. Germany
+Ans : A. Belgium
