@@ -1,0 +1,6 @@
+Options 
+A. Queuewait
+B. Kuwait
+C. Taiwan
+D. Aruba
+Ans : B. Kuwait
