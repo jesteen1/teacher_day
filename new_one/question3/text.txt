@@ -1,0 +1,6 @@
+Options: 
+A. Mongolia
+B. Germania 
+C. Germany
+D. Macedonia
+Ans: C. Germany

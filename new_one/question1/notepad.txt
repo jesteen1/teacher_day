@@ -1,0 +1,6 @@
+Options :
+A. Inkland
+B. England 
+C. Poland
+D. India
+Ans : B. England

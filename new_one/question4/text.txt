@@ -1,0 +1,6 @@
+Options:
+A. Netherland
+B. Iceland 
+C. Cuba
+D. Columbia 
+Ans : B. Iceland
