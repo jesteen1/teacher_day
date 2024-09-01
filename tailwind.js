@@ -415,24 +415,24 @@ terminate.onclick=()=>{
     
 hided.classList.add("hidden")
 }   
-// checked.onclick=()=>{
+ checked.onclick=()=>{
     
-//     hided.classList.remove("hidden")
-//     var total_point=[JSON.parse(localStorage.getItem("greenscore")) ,JSON.parse(localStorage.getItem("pinkscore")) ,JSON.parse(localStorage.getItem("orangescore")) ,JSON.parse(localStorage.getItem("bluescore")) ]
-// var maximum=Math.max(total_point[0],total_point[1],total_point[2],total_point[3])
-// if(maximum==JSON.parse(localStorage.getItem("greenscore"))){
-//  team_name.innerHTML="green Team"
-// }
-// else if(maximum==JSON.parse(localStorage.getItem("pinkscore"))){
-//     team_name.innerHTML="pink Team"
-//    }
-// else  if(maximum==JSON.parse(localStorage.getItem("orangescore"))){
-//     team_name.innerHTML="orange Team"
-//    }
-// else if(maximum==JSON.parse(localStorage.getItem("bluescore"))){
-//     team_name.innerHTML="blue Team"
-//    }
-//     }   
+     hided.classList.remove("hidden")
+     var total_point=[JSON.parse(localStorage.getItem("greenscore")) ,JSON.parse(localStorage.getItem("pinkscore")) ,JSON.parse(localStorage.getItem("orangescore")) ,JSON.parse(localStorage.getItem("bluescore")) ]
+ var maximum=Math.max(total_point[0],total_point[1],total_point[2],total_point[3])
+ if(maximum==JSON.parse(localStorage.getItem("greenscore"))){
+  team_name.innerHTML="green Team"
+ }
+ else if(maximum==JSON.parse(localStorage.getItem("pinkscore"))){
+     team_name.innerHTML="pink Team"
+    }
+ else  if(maximum==JSON.parse(localStorage.getItem("orangescore"))){
+     team_name.innerHTML="orange Team"
+    }
+ else if(maximum==JSON.parse(localStorage.getItem("bluescore"))){
+    team_name.innerHTML="blue Team"
+   }
+    }   
 var close_team=document.getElementById("close_team")
 var pointed=document.getElementById("pointed")
 close_team.onclick=()=>{
