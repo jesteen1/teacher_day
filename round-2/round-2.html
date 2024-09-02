@@ -850,6 +850,35 @@
     <div class=" w-full bg-purple-400" id="data_set">
         <p id="ques_num"class="p-5 font-bold text-2xl"></p>
         <div class="img flex gap-8 p-5 justify-center">
+            <img src="./round_two/question27/image1.jpg" alt="" class="image_size rounded">
+            
+        </div>
+
+        <div class=" p-5 justify-center flex gap-8 height overflow-hidden">
+            <div class="flex py-3">
+                <div class="">
+                    <p id="check_answer"
+                        class="font-bold bg-yellow-500 p-5 cursor-pointer hover:bg-red-500 transition-all hover:text-white  hover:font-bold duration-200 ">
+                        Rajiv Gandhi</p>
+                </div>
+            </div>
+
+        </div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500  button-height">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500 button-height">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500 button-height">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-500 button-height">green team</p>
+            </div>
+        </div>
+    </div>
+    <div class=" w-full bg-purple-400" id="data_set">
+        <p id="ques_num"class="p-5 font-bold text-2xl"></p>
+        <div class="img flex gap-8 p-5 justify-center">
             <img src="./round_two/question28/image1.jpg" alt="" class="image_size rounded">
             
         </div>
@@ -987,6 +1016,9 @@
             id="clear">clear</div>
 
     </div>
+    <div class="bg-red-500 text-center p-5 text-2xl text-white  ">
+        <a href="../round-3/round-3.html" class="hover:bg-yellow-500 p-5 justify-center flex head">Go to next round <img src="../arrow.svg" class="movement ml-2 text-white mt-1   w-6 h-6" alt=""></a>
+            </div>
 </body>
 <script src="./tailwind.js"></script>
 <style>
@@ -1000,7 +1032,16 @@
         height: 500px;
         width: 500px;
     }
+    .head:hover >.movement{
+        transform: translateX(6px);
+        
+        transition: all linear 0.5s;
 
+    }
+    .movement{
+        
+        transition: all linear 0.5s;
+    }
 
     .bg-yellow-500 {
         background-color: yellow;
