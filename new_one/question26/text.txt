@@ -1,6 +1,6 @@
 Options 
-A. Thailand
-B. Ireland
-C. Poland
-D. Northern Ireland 
-Ans: B. Ireland
+A. Bulgaria
+B. Honduras
+C. Ecuador 
+D. Panama
+Ans : D. Panama

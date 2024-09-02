@@ -1,6 +1,6 @@
 Options 
-A. Finland 
-B. Scotland 
-C. Poland
-D. Pollard 
-Ans: C. Poland
+A. Oman 
+B. Iran
+C. Iraq
+D. Eman
+Ans: C. Iraq
