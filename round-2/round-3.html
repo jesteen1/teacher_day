@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>connection game part-3</title>
+    <link rel="stylesheet" href="../tailwind.css">
+</head>
+
+<body>
+
+    <section class="justify-center flex hidden" name="winner-section" id="hide">
+
+        <div id="default-modal" tabindex="-1"
+            class=" flex justify-center overflow-y-auto overflow-x-hidden fixed top-0 bottom-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            The Team Points
+                        </h3>
+
+                    </div>
+                    <div class="flex justify-center">   
+                        <video type="video/mp4" autoplay="true" src="../Stars_white.mp4" muted="" loop class="h-40 h-40"
+                            preload="auto">
+
+                        </video>
+
+                    </div>
+                    <p class="text-center p-5 text-2xl text-blue-500">Winner of the game</p>
+                    <p class="text-center p-5 text-2xl font-bold" id="team_name">Team name</p>
+                    <!-- Modal body -->
+                    <div class="p-5"><button class="p-5 bg-red-500 scale-100 transform hover:scale-110"
+                            id="close">close</button></div>
+                    <!-- Modal footer -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="justify-center flex hidden" name="point-update" id="pointed">
+
+        <div id="default-modal" tabindex="-1"
+            class=" flex justify-center overflow-y-auto overflow-x-hidden fixed top-0 bottom-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-2xl max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-xl font-semibold text-gray-900 dark:text-white">
+                            The score of match
+                        </h3>
+
+                    </div>
+
+                    <p class="text-center p-5 text-2xl text-blue-500">The team points </p>
+                    <div class="flex border border-black p-5 blue">
+                        <p class="text-center  text-2xl font-bold mr-3 ">blue point : </p>
+                        <p class="text-center  text-2xl font-bold" id="blue_pointed"> 0</p>
+
+                    </div>
+                    <div class="flex border border-black p-5 green">
+                        <p class="text-center  text-2xl font-bold mr-2">green point:</p>
+                        <p class="text-center  text-2xl font-bold " id="green_pointed">0</p>
+                    </div>
+
+                    <div class="flex border border-black p-5 bg-pink-500">
+                        <p class="text-center  text-2xl font-bold mr-3">pink point :</p>
+
+                        <p class="text-center  text-2xl font-bold" id="pink_pointed">0</p>
+                    </div>
+
+                    <div class="flex border border-black p-5 orange">
+                        <p class="text-center  text-2xl font-bold mr-2 ">Orange point:</p>
+                        <p class="text-center text-2xl font-bold" id="Orange_pointed">0</p>
+                    </div>
+
+                    <!-- Modal body -->
+                    <div class="p-5"><button
+                            class="p-5 bg-red-500 scale-100 transform hover:scale-110 text-white shadow-2xl"
+                            id="close_team">close in </button></div>
+                    <!-- Modal footer -->
+
+                </div>
+            </div>
+        </div>
+    </section>
+    <h1 class=" font-bold bg-purple-500 p-5 text-center  text-white text-3xl">Connection Game-3</h1>
+    
+
+    <!--set completed-->
+ <div class="p-5 bg-yellow-500 "><button class="p-5 green hover:bg-red-500 hover:text-white hover:font-bold" id="btn">Image1</button>
+    <button class="orange p-5 hover:bg-red-500 hover:text-white hover:font-bold" id="btn">Image2</button>
+    <button class="bg-pink-500 p-5 hover:bg-red-500 hover:text-white hover:font-bold" id="btn">Image3</button>
+    <button class="bg-blue-500 p-5 hover:bg-red-500 hover:text-white hover:font-bold"id="btn">Image4</button>
+    <button class="bg-blue-500 p-5 hover:bg-red-500 hover:text-white hover:font-bold"id="btn">Image5</button>
+</div>
+    <!--set completed-->
+    <div name="last_conent" class="orange  w-full">
+        <div class="img flex gap-8 p-5 justify-center hidden" id="image">
+            <img src="./new_image/image1.jpg" alt="" class="image_size rounded">
+           
+        </div>
+        <div class="img flex gap-8 p-5 justify-center hidden" id="image">
+            <img src="./new_image/image2.jpg" alt="" class="image_size rounded">
+           
+        </div>
+ 
+        <div class="flex justify-center text-2xl" id="hidden_id"><p class="ml-2">Closed in</p><p id="update_id" class="ml-2 font-bold" >5</p><p class="ml-2">(s)</p></div>
+        <div class="refer">
+            <p class="text-2xl text-center cursor-pointer">-----</p>
+            <div
+                class="flex  gap-1 justify-center transition duration-200 overflow-hidden height border-2 border-red-500">
+                <p id="pink_point" class="p-5 bg-red-500 text-white cursor-pointer hover:bg-yellow-800">pink team</p>
+                <p id="blue_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">blue team</p>
+                <p id="orange_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">orange team
+                </p>
+                <p id="green_point" class="p-5  bg-red-500 text-white cursor-pointer hover:bg-yellow-800">green team</p>
+            </div>
+            <div class="p-5">
+                <div class="p-5  w-28 scale-100 transition-all transform duration-300  text-center cursor-pointer bg-red-500 hover:bg-green-500 hover:scale-110"
+                    id="check">check</div>
+            </div>
+
+        </div>
+    </div>
+    <section name="table section" class="mt-10">
+
+        <p>-----</p>
+        <div class="table-wrapper text-2xl">
+            <table class="fl-table">
+                <thead>
+                    <tr>
+                        <th>Team name</th>
+                        <th>no of points</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>green team</td>
+                        <td id="green_display" class="font-bold">0</td>
+
+                    </tr>
+                    <tr>
+                        <td>orange-team</td>
+                        <td id="orange_display" class="font-bold">0</td>
+
+                    </tr>
+                    <tr>
+                        <td>blue-team</td>
+                        <td id="blue_display" class="font-bold">0</td>
+
+                    </tr>
+                    <tr>
+                        <td>pink team</td>
+                        <td id="pink_display" class="font-bold">0</td>
+                    </tr>
+                    <tr>
+
+                    </tr>
+                <tbody>
+            </table>
+
+        </div>
+
+
+    </section>
+    <div class="flex justify-center p-5">
+
+        <div class="p-5  w-28 scale-100 transition-all transform duration-300  text-center cursor-pointer bg-red-500 hover:bg-yellow-500 hover:scale-110"
+            id="clear">clear</div>
+
+    </div>
+</body>
+<script src="./tailwind.js"></script>
+<style>
+
+    #pink_point,#blue_point,#orange_point,#green_point{
+        height: 70px  ;
+        width: 200px;
+        text-align: center;
+    }
+    .image_size{
+        height: 500px;
+        width: 500px;
+    }
+
+
+    .bg-yellow-500 {
+        background-color: yellow;
+    }
+
+    .green {
+        background-color: rgb(40, 255, 40);
+        color: rgb(5, 3, 3);
+    }
+
+    .blue {
+        background-color: rgb(72, 152, 255);
+    }
+
+    .orange {
+        background: orange;
+    }
+
+    .correct {
+        background-color: rgb(55, 255, 55);
+        color: whitesmoke;
+
+        font-weight: 800;
+    }
+
+    .height {
+        height: 0;
+        transition: all .5s linear;
+    }
+
+    .refer:hover>.height {
+        height: 140px;
+        padding: 30px;
+    }
+
+
+    * {
+        box-sizing: border-box;
+        -webkit-box-sizing: border-box;
+        -moz-box-sizing: border-box;
+    }
+
+    body {
+        font-family: Helvetica;
+        -webkit-font-smoothing: antialiased;
+        background: rgba(71, 147, 227, 1);
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 18px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        color: white;
+        padding: 30px 0;
+    }
+
+    /* Table Styles */
+
+    .table-wrapper {
+        margin: 10px 70px 70px;
+        box-shadow: 0px 35px 50px rgba(0, 0, 0, 0.2);
+    }
+
+    .fl-table {
+        border-radius: 5px;
+        font-size: 22px;
+        font-weight: normal;
+        border: none;
+        border-collapse: collapse;
+        width: 100%;
+        max-width: 100%;
+        white-space: nowrap;
+        background-color: white;
+    }
+
+    .fl-table td,
+    .fl-table th {
+        text-align: center;
+        padding: 8px;
+    }
+
+    .fl-table td {
+        border-right: 1px solid #f8f8f8;
+        font-size: 12px;
+    }
+
+    .fl-table thead th {
+        color: #ffffff;
+        background: #4FC3A1;
+    }
+
+
+    .fl-table thead th:nth-child(odd) {
+        color: #ffffff;
+        background: #324960;
+    }
+
+    .fl-table tr:nth-child(even) {
+        background: #F8F8F8;
+    }
+
+    /* Responsive */
+
+    @media (max-width: 767px) {
+        .fl-table {
+            display: block;
+            width: 100%;
+        }
+
+        .table-wrapper:before {
+            content: "Scroll horizontally >";
+            display: block;
+            text-align: right;
+            font-size: 11px;
+            color: white;
+            padding: 0 0 10px;
+        }
+
+        .fl-table thead,
+        .fl-table tbody,
+        .fl-table thead th {
+            display: block;
+        }
+
+        .fl-table thead th:last-child {
+            border-bottom: none;
+        }
+
+        .fl-table thead {
+            float: left;
+        }
+
+        .fl-table tbody {
+            width: auto;
+            position: relative;
+            overflow-x: auto;
+        }
+
+        .fl-table td,
+        .fl-table th {
+            padding: 20px .625em .625em .625em;
+            height: 60px;
+            vertical-align: middle;
+            box-sizing: border-box;
+            overflow-x: hidden;
+            overflow-y: auto;
+            width: 120px;
+            font-size: 13px;
+            text-overflow: ellipsis;
+        }
+
+        .fl-table thead th {
+            text-align: left;
+            border-bottom: 1px solid #f7f7f9;
+        }
+
+        .fl-table tbody tr {
+            display: table-cell;
+        }
+
+        .fl-table tbody tr:nth-child(odd) {
+            background: none;
+        }
+
+        .fl-table tr:nth-child(even) {
+            background: transparent;
+        }
+
+        .fl-table tr td:nth-child(odd) {
+            background: #F8F8F8;
+            border-right: 1px solid #E6E4E4;
+        }
+
+        .fl-table tr td:nth-child(even) {
+            border-right: 1px solid #E6E4E4;
+        }
+
+        .fl-table tbody td {
+            display: block;
+            text-align: center;
+        }
+    }
+</style>
+
+</html>
