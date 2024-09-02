@@ -2181,6 +2181,9 @@
             id="clear">clear</div>
 
     </div>
+    <div class="bg-red-500 text-center p-5 text-2xl text-white  ">
+<a href="./round-2/round-2.html" class="hover:bg-yellow-500 p-5 justify-center flex head">Go to next round <img src="./arrow.svg" class="movement ml-2 text-white mt-1   w-6 h-6" alt=""></a>
+    </div>
 </body>
 <script src="./tailwind.js"></script>
 <style>
@@ -2188,10 +2191,20 @@
     #orange_point,
     #blue_point,
     #pink_point {
-        height: 70px;
-
+        height: 70px  ;
+        width: 200px;
     }
 
+    .head:hover >.movement{
+        transform: translateX(6px);
+        
+        transition: all linear 0.5s;
+
+    }
+    .movement{
+        
+        transition: all linear 0.5s;
+    }
     .bg-yellow-500 {
         background-color: yellow;
     }
