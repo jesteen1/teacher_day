@@ -1,6 +1,6 @@
 Options 
-A. Sherwan 
-B. Taiwan 
-C. Latvia
-D. Jersey
-Ans : B. Taiwan
+A. United States
+B. United Arab Emirates 
+C. United Kingdom 
+D. Serbia
+Ans : C. United Kingdom
