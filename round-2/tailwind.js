@@ -7,6 +7,7 @@ var blue_score=0
 var pink_score=0
 var green_score=0
 var time_of_close=16
+var timed
 var pink_point=document.querySelectorAll("#pink_point")
 var blue_point=document.querySelectorAll("#blue_point")
 var orange_point=document.querySelectorAll("#orange_point")
@@ -75,16 +76,16 @@ blue_display.innerHTML=localStorage.getItem("bluescore")
                         var total_point=[JSON.parse(localStorage.getItem("greenscore")) ,JSON.parse(localStorage.getItem("pinkscore")) ,JSON.parse(localStorage.getItem("orangescore")) ,JSON.parse(localStorage.getItem("bluescore")) ]
                     var maximum=Math.max(total_point[0],total_point[1],total_point[2],total_point[3])
                     if(maximum==JSON.parse(localStorage.getItem("greenscore"))){
-                     team_name.innerHTML="green Team"
+                     team_name.innerHTML=`<div><p>green Team</p><p>score:${localStorage.getItem("greenscore")}</p></div>`
                     }
                     else if(maximum==JSON.parse(localStorage.getItem("pinkscore"))){
-                        team_name.innerHTML="pink Team"
+                        team_name.innerHTML=`<div><p> pink Team</p><p>score:${localStorage.getItem("pinkscore")}</p></div>`
                        }
                     else  if(maximum==JSON.parse(localStorage.getItem("orangescore"))){
-                        team_name.innerHTML="orange Team"
+                        team_name.innerHTML=`<div><p>orange Team</p><p>score:${localStorage.getItem("orangescore")}</p></div>`
                        }
                     else if(maximum==JSON.parse(localStorage.getItem("bluescore"))){
-                        team_name.innerHTML="blue Team"
+                        team_name.innerHTML=`<div><p> blue Team</p><p>score:${localStorage.getItem("bluescore")}</p></div>`
                        }
                     }
                     else{
@@ -92,12 +93,8 @@ blue_display.innerHTML=localStorage.getItem("bluescore")
                         pointed_data.classList.remove("hidden")
       
                         var time=time_of_close
-                     const timed= setInterval(work,1000)
-                    
-
-                      function work(){
-                       
-                        var close_team_1=document.getElementById("close_team")
+                      timed= setInterval(work,1000)
+                      var close_team_1=document.getElementById("close_team")
                         var Orange_pointed=document.getElementById("Orange_pointed")
                         var blue_pointed=document.getElementById("blue_pointed")
                         var pink_pointed=document.getElementById("pink_pointed")
@@ -106,6 +103,10 @@ blue_display.innerHTML=localStorage.getItem("bluescore")
                         blue_pointed.innerHTML=localStorage.getItem("bluescore")
                         pink_pointed.innerHTML=localStorage.getItem("pinkscore")
                         green_pointed.innerHTML=localStorage.getItem("greenscore")
+
+                      function work(){
+                       
+                      
                             time=time-1
                             if(time==0){
                                 clearInterval(timed)
@@ -138,6 +139,7 @@ for(let p=0; p<pink_point.length; p++){
 var orange_display=document.getElementById("orange_display")
 var pink_display=document.getElementById("pink_display")
 var blue_display=document.getElementById("blue_display")
+
 green_display.innerHTML=localStorage.getItem("greenscore")
 pink_display.innerHTML=localStorage.getItem("pinkscore")
 orange_display.innerHTML=localStorage.getItem("orangescore")
@@ -162,16 +164,16 @@ blue_display.innerHTML=localStorage.getItem("bluescore")
                         var total_point=[JSON.parse(localStorage.getItem("greenscore")) ,JSON.parse(localStorage.getItem("pinkscore")) ,JSON.parse(localStorage.getItem("orangescore")) ,JSON.parse(localStorage.getItem("bluescore")) ]
                     var maximum=Math.max(total_point[0],total_point[1],total_point[2],total_point[3])
                     if(maximum==JSON.parse(localStorage.getItem("greenscore"))){
-                     team_name.innerHTML="green Team"
+                     team_name.innerHTML=`<div><p>green Team</p><p>score:${localStorage.getItem("greenscore")}</p></div>`
                     }
                     else if(maximum==JSON.parse(localStorage.getItem("pinkscore"))){
-                        team_name.innerHTML="pink Team"
+                        team_name.innerHTML=`<div><p> pink Team</p><p>score:${localStorage.getItem("pinkscore")}</p></div>`
                        }
                     else  if(maximum==JSON.parse(localStorage.getItem("orangescore"))){
-                        team_name.innerHTML="orange Team"
+                        team_name.innerHTML=`<div><p>orange Team</p><p>score:${localStorage.getItem("orangescore")}</p></div>`
                        }
                     else if(maximum==JSON.parse(localStorage.getItem("bluescore"))){
-                        team_name.innerHTML="blue Team"
+                        team_name.innerHTML=`<div><p> blue Team</p><p>score:${localStorage.getItem("bluescore")}</p></div>`
                        }
                     }
                     else{
@@ -179,12 +181,8 @@ blue_display.innerHTML=localStorage.getItem("bluescore")
                         pointed_data.classList.remove("hidden")
       
                         var time=time_of_close
-                     const timed= setInterval(work,1000)
-                    
-
-                      function work(){
-                       
-                        var close_team_1=document.getElementById("close_team")
+                      
+                      var close_team_1=document.getElementById("close_team")
                         var Orange_pointed=document.getElementById("Orange_pointed")
                         var blue_pointed=document.getElementById("blue_pointed")
                         var pink_pointed=document.getElementById("pink_pointed")
@@ -193,6 +191,10 @@ blue_display.innerHTML=localStorage.getItem("bluescore")
                         blue_pointed.innerHTML=localStorage.getItem("bluescore")
                         pink_pointed.innerHTML=localStorage.getItem("pinkscore")
                         green_pointed.innerHTML=localStorage.getItem("greenscore")
+                        timed= setInterval(work,1000)
+                      function work(){
+                       
+                      
                             time=time-1
                             if(time==0){
                                 clearInterval(timed)
@@ -246,16 +248,16 @@ blue_display.innerHTML=localStorage.getItem("bluescore")
                         var total_point=[JSON.parse(localStorage.getItem("greenscore")) ,JSON.parse(localStorage.getItem("pinkscore")) ,JSON.parse(localStorage.getItem("orangescore")) ,JSON.parse(localStorage.getItem("bluescore")) ]
                     var maximum=Math.max(total_point[0],total_point[1],total_point[2],total_point[3])
                     if(maximum==JSON.parse(localStorage.getItem("greenscore"))){
-                     team_name.innerHTML="green Team"
+                     team_name.innerHTML=`<div><p>green Team</p><p>score:${localStorage.getItem("greenscore")}</p></div>`
                     }
                     else if(maximum==JSON.parse(localStorage.getItem("pinkscore"))){
-                        team_name.innerHTML="pink Team"
+                        team_name.innerHTML=`<div><p> pink Team</p><p>score:${localStorage.getItem("pinkscore")}</p></div>`
                        }
                     else  if(maximum==JSON.parse(localStorage.getItem("orangescore"))){
-                        team_name.innerHTML="orange Team"
+                        team_name.innerHTML=`<div><p>orange Team</p><p>score:${localStorage.getItem("orangescore")}</p></div>`
                        }
                     else if(maximum==JSON.parse(localStorage.getItem("bluescore"))){
-                        team_name.innerHTML="blue Team"
+                        team_name.innerHTML=`<div><p> blue Team</p><p>score:${localStorage.getItem("bluescore")}</p></div>`
                        }
                     }
                     else{
@@ -263,20 +265,21 @@ blue_display.innerHTML=localStorage.getItem("bluescore")
                         pointed_data.classList.remove("hidden")
       
                         var time=time_of_close
-                     const timed= setInterval(work,1000)
                     
+                      var close_team_1=document.getElementById("close_team")
+                      var Orange_pointed=document.getElementById("Orange_pointed")
+                      var blue_pointed=document.getElementById("blue_pointed")
+                      var pink_pointed=document.getElementById("pink_pointed")
+                      var green_pointed=document.getElementById("green_pointed")
+                      Orange_pointed.innerHTML=localStorage.getItem("orangescore")
+                      blue_pointed.innerHTML=localStorage.getItem("bluescore")
+                      pink_pointed.innerHTML=localStorage.getItem("pinkscore")
+                      green_pointed.innerHTML=localStorage.getItem("greenscore")
+                      timed= setInterval(work,1000)
 
                       function work(){
                        
-                        var close_team_1=document.getElementById("close_team")
-                        var Orange_pointed=document.getElementById("Orange_pointed")
-                        var blue_pointed=document.getElementById("blue_pointed")
-                        var pink_pointed=document.getElementById("pink_pointed")
-                        var green_pointed=document.getElementById("green_pointed")
-                        Orange_pointed.innerHTML=localStorage.getItem("orangescore")
-                        blue_pointed.innerHTML=localStorage.getItem("bluescore")
-                        pink_pointed.innerHTML=localStorage.getItem("pinkscore")
-                        green_pointed.innerHTML=localStorage.getItem("greenscore")
+                        
                             time=time-1
                             if(time==0){
                                 clearInterval(timed)
@@ -334,16 +337,16 @@ blue_display.innerHTML=localStorage.getItem("bluescore")
                         var total_point=[JSON.parse(localStorage.getItem("greenscore")) ,JSON.parse(localStorage.getItem("pinkscore")) ,JSON.parse(localStorage.getItem("orangescore")) ,JSON.parse(localStorage.getItem("bluescore")) ]
                     var maximum=Math.max(total_point[0],total_point[1],total_point[2],total_point[3])
                     if(maximum==JSON.parse(localStorage.getItem("greenscore"))){
-                     team_name.innerHTML="green Team"
+                     team_name.innerHTML=`<div><p>green Team</p><p>score:${localStorage.getItem("greenscore")}</p></div>`
                     }
                     else if(maximum==JSON.parse(localStorage.getItem("pinkscore"))){
-                        team_name.innerHTML="pink Team"
+                        team_name.innerHTML=`<div><p> pink Team</p><p>score:${localStorage.getItem("pinkscore")}</p></div>`
                        }
                     else  if(maximum==JSON.parse(localStorage.getItem("orangescore"))){
-                        team_name.innerHTML="orange Team"
+                        team_name.innerHTML=`<div><p>orange Team</p><p>score:${localStorage.getItem("orangescore")}</p></div>`
                        }
                     else if(maximum==JSON.parse(localStorage.getItem("bluescore"))){
-                        team_name.innerHTML="blue Team"
+                        team_name.innerHTML=`<div><p> blue Team</p><p>score:${localStorage.getItem("bluescore")}</p></div>`
                        }
                     }
                     else{
@@ -352,11 +355,6 @@ blue_display.innerHTML=localStorage.getItem("bluescore")
                         pointed_data.classList.remove("hidden")
       
                         var time=time_of_close
-                     const timed= setInterval(work,1000)
-                    
-
-                      function work(){
-                       
                         var close_team_1=document.getElementById("close_team")
                         var Orange_pointed=document.getElementById("Orange_pointed")
                         var blue_pointed=document.getElementById("blue_pointed")
@@ -366,6 +364,12 @@ blue_display.innerHTML=localStorage.getItem("bluescore")
                         blue_pointed.innerHTML=localStorage.getItem("bluescore")
                         pink_pointed.innerHTML=localStorage.getItem("pinkscore")
                         green_pointed.innerHTML=localStorage.getItem("greenscore")
+                      timed= setInterval(work,1000)
+                    
+
+                      function work(){
+                       
+                        
                             time=time-1
                             if(time==0){
                                 clearInterval(timed)
@@ -436,6 +440,7 @@ hided.classList.add("hidden")
 var close_team=document.getElementById("close_team")
 var pointed=document.getElementById("pointed")
 close_team.onclick=()=>{
+    clearInterval(timed)
     pointed.classList.add("hidden")
 }
 
